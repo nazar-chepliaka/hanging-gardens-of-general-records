@@ -12,6 +12,8 @@
 + https://uk.wikipedia.org/wiki/Інституційний_репозитарій
 + https://uk.wikipedia.org/wiki/Довідка:Вікіфікація
 
+<img src="https://raw.githubusercontent.com/nazar-chepliaka/hanging-gardens-of-general-records/master/storage/app/readme-images/photo_2023-03-18_17-10-02.jpg">
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
