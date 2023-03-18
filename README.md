@@ -8,6 +8,7 @@
 </p>
 
 ## Див. також
++ https://uk.wikipedia.org/wiki/Зетелькастен
 + https://uk.wikipedia.org/wiki/DMOZ
 + https://uk.wikipedia.org/wiki/Інституційний_репозитарій
 + https://uk.wikipedia.org/wiki/Довідка:Вікіфікація
