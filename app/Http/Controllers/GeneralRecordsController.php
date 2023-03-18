@@ -11,7 +11,6 @@ class GeneralRecordsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    #[Route("/", methods: ["GET"])]
     public function index()
     {
         $general_records = GeneralRecord::doesntHave('parent_records')->get();
@@ -22,7 +21,6 @@ class GeneralRecordsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    #[Route("/create", methods: ["GET"])]
     public function create()
     {
         return view('general_records.create');
@@ -31,10 +29,31 @@ class GeneralRecordsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    #[Route("/", methods: ["POST"])]
     public function store(Request $request)
     {
         $general_record = GeneralRecord::create($request->only(GeneralRecord::getTableColumnsNames()));
+
+        return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $general_record = GeneralRecord::find($id);
+
+        return view('general_records.edit', compact('general_record'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $general_record = GeneralRecord::find($id);
+
+        $general_record->update($request->only(array_keys($general_record->getAttributes())));
 
         return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
     }
