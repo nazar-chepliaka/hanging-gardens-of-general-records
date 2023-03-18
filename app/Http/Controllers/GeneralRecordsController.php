@@ -37,6 +37,10 @@ class GeneralRecordsController extends Controller
     {
         $general_record = GeneralRecord::create($request->only(GeneralRecord::getTableColumnsNames()));
 
+        if ($request->filled('parent_general_records_ids')) {
+            $general_record->parent_records()->sync($request->parent_general_records_ids);
+        }
+
         return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
     }
 
@@ -46,8 +50,9 @@ class GeneralRecordsController extends Controller
     public function edit(string $id)
     {
         $general_record = GeneralRecord::find($id);
+        $general_records = GeneralRecord::whereNotIn('id',array_merge([$id], $general_record->children_records->pluck('id')->toArray()))->get();
 
-        return view('general_records.edit', compact('general_record'));
+        return view('general_records.edit', compact('general_record', 'general_records'));
     }
 
     /**
@@ -57,7 +62,13 @@ class GeneralRecordsController extends Controller
     {
         $general_record = GeneralRecord::find($id);
 
+        $general_record->parent_records()->sync([]);
+
         $general_record->update($request->only(array_keys($general_record->getAttributes())));
+
+        if ($request->filled('parent_general_records_ids')) {
+            $general_record->parent_records()->sync($request->parent_general_records_ids);
+        }
 
         return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
     }

@@ -23,6 +23,8 @@ class FormGeneralRecordsRequest extends FormRequest
     {
         return [
             'value' => ['required','string'],
+            'parent_general_records_ids' => ['nullable','array'],
+            'parent_general_records_ids.*' => ['exists:general_records,id'],
         ];
     }
 

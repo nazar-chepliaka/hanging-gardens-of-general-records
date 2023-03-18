@@ -23,7 +23,7 @@
             Є дочірнім для:
             @forelse ($general_records as $general_record)
                 <div>
-                    <label><input type="checkbox" name="parent_general_records_ids"> {{ $general_record->value }} </label>
+                    <label><input type="checkbox" name="parent_general_records_ids[]" value="{{ $general_record->id }}" @if(in_array($general_record->id, old('parent_general_records_ids', []))) checked="true" @endif > {{ $general_record->value }} </label>
                 </div>
             @empty
                 <p>
