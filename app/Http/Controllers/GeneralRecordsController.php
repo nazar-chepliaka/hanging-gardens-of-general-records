@@ -16,7 +16,7 @@ class GeneralRecordsController extends Controller
     {
         $general_records = GeneralRecord::doesntHave('parent_records')->get();
 
-        return view('main_form', compact('general_records'));
+        return view('general_records.index', compact('general_records'));
     }
 
     /**
@@ -24,6 +24,15 @@ class GeneralRecordsController extends Controller
      */
     #[Route("/create", methods: ["GET"])]
     public function create()
+    {
+        return view('general_records.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    #[Route("/", methods: ["POST"])]
+    public function store(Request $request)
     {
         //
     }
