@@ -72,4 +72,15 @@ class GeneralRecordsController extends Controller
 
         return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
     }
+
+    /**
+     * Detach the specified resource from the specified resource in storage.
+     */
+    public function detachChild(Request $request, string $id, string $child_id)
+    {
+        $general_record = GeneralRecord::find($id);
+        $general_record->children_records()->detach($child_id);
+
+        return redirect()->route('general_records.edit', $id)->with('success', 'Запис успішно вилучено');
+    }
 }

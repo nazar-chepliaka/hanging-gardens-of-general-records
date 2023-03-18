@@ -8,6 +8,10 @@
         .alert-danger {
             color: #ff0000;
         }
+        
+        .alert-success {
+            color: #007d00;
+        }
     </style>
 </head>
 <body>

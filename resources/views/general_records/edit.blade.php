@@ -22,22 +22,9 @@
         <br>
         <div>
             Є дочірнім для:
-            @forelse ($general_records as $general_record)
+            @forelse ($general_records as $parent)
                 <div>
-                    <label><input type="checkbox" name="parent_general_records_ids[]" value="{{ $general_record->id }}" @if(in_array($general_record->id, old('parent_general_records_ids', $general_record->parent_records->pluck('id')->toArray()))) checked="true" @endif > {{ $general_record->value }} </label>
-                </div>
-            @empty
-                <p>
-                    Жодного запису.
-                </p>
-            @endforelse
-        </div>
-        <br>
-        <div>
-            Є батьківським для:
-            @forelse ($general_record->children_records as $general_record)
-                <div>
-                    <label>{{ $general_record->value }}</label>
+                    <label><input type="checkbox" name="parent_general_records_ids[]" value="{{ $parent->id }}" @if(in_array($parent->id, old('parent_general_records_ids', $general_record->parent_records->pluck('id')->toArray()))) checked="true" @endif > {{ $parent->value }} </label>
                 </div>
             @empty
                 <p>
@@ -50,4 +37,23 @@
             <input type="submit" name="submit" value="Зберегти">
         </div>
     </form>
+    <br>
+    <div>
+        Наразі є батьківським для:
+        @forelse ($general_record->children_records as $child)
+            <div>
+                <form action="{{ route('general_records.detach_child', ['id' => $general_record->id, 'child_id' => $child->id]) }}" method="POST">
+                    {!! csrf_field() !!}
+                    {{ method_field('DELETE') }}
+
+                    {{ $child->value }}
+                    <input type="submit" name="submit" value="Вилучити">
+                </form>
+            </div>
+        @empty
+            <p>
+                Жодного запису.
+            </p>
+        @endforelse
+    </div>
 @endsection
