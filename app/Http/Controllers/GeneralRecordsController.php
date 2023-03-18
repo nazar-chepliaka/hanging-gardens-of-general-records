@@ -34,6 +34,8 @@ class GeneralRecordsController extends Controller
     #[Route("/", methods: ["POST"])]
     public function store(Request $request)
     {
-        //
+        $general_record = GeneralRecord::create($request->only(GeneralRecord::getTableColumnsNames()));
+
+        return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
     }
 }

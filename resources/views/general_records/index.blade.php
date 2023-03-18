@@ -7,10 +7,13 @@
 <body>
     <a href="{{ route('general_records.create') }}">Створити</a>
 
-    @foreach($general_records as $general_record)
-        {{$general_record->value}}
-    @endforeach
-
+    <ul>
+        @forelse ($general_records as $general_record)
+            <li>{{$general_record->value}}</li>
+        @empty
+            <li>Немає жодного запису</li>
+        @endforelse
+    </ul>
 
 </body>
 </html>

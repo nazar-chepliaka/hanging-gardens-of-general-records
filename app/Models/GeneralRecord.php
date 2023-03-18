@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\getTableColumnsNames;
+
 class GeneralRecord extends Model
 {
-    use HasFactory;
+    use HasFactory, getTableColumnsNames;
 
     protected $guarded = [];
 

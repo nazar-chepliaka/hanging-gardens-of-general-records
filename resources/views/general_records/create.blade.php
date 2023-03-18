@@ -8,12 +8,12 @@
     <a href="{{ route('general_records.index') }}">Каталог</a>
 
     <form action="{{ route('general_records.store') }}" method="POST">
+        {!! csrf_field() !!}
+        
         <div>
             <label>
                 Запис:<br>
-                <textarea name="value">
-                    
-                </textarea>
+                <textarea name="value"></textarea>
             </label>
         </div>
         <div>
