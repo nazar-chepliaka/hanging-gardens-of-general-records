@@ -13,6 +13,8 @@
 
 @section('content')
     <br><a href="{{ route('general_records.create') }}">Створити новий запис</a><br><br>
+    
+    @include('alerts')
 
     <table border="1">
         <tr>

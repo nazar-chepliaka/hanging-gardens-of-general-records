@@ -70,7 +70,7 @@ class GeneralRecordsController extends Controller
             $general_record->parent_records()->sync($request->parent_general_records_ids);
         }
 
-        return redirect()->route('general_records.index')->with('success', 'Запис успішно збережено');
+        return redirect()->route('general_records.edit', $id)->with('success', 'Запис успішно збережено');
     }
 
     /**
