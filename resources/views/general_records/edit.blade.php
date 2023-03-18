@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
-</head>
-<body>
+@extends('layout')
+
+@section('head')
+    <title>Редагувати запис</title>
+@endsection
+
+@section('content')
     <br><a href="{{ route('general_records.index') }}">Перелік</a><br><br>
+
+    @include('alerts')
 
     <form action="{{ route('general_records.update', $general_record->id) }}" method="POST">
         {!! csrf_field() !!}
@@ -21,6 +23,4 @@
             <input type="submit" name="submit" value="Зберегти">
         </div>
     </form>
-
-</body>
-</html>
+@endsection

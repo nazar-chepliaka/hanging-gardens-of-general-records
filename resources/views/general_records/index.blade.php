@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
+@extends('layout')
+
+@section('head')
+    <title>Перелік</title>
+
     <style>
         td, th {
             padding: 10px;
         }
     </style>
-</head>
-<body>
+@endsection
+
+@section('content')
     <br><a href="{{ route('general_records.create') }}">Створити новий запис</a><br><br>
 
     <table border="1">
@@ -30,9 +31,4 @@
             </tr>
         @endforelse
     </table>
-    <ul>
-        
-    </ul>
-
-</body>
-</html>
+@endsection
