@@ -15,7 +15,8 @@ class GeneralRecordsController extends Controller
      */
     public function index()
     {
-        $general_records = GeneralRecord::doesntHave('parent_records')->get();
+        //$general_records = GeneralRecord::doesntHave('parent_records')->get();
+        $general_records = GeneralRecord::all();
 
         return view('general_records.index', compact('general_records'));
     }
