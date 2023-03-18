@@ -23,5 +23,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('/', 'GeneralRecordsController@store')->name('general_records.store');
     Route::get('/{id}/edit', 'GeneralRecordsController@edit')->name('general_records.edit');
     Route::put('/{id}', 'GeneralRecordsController@update')->name('general_records.update');
+    Route::delete('/{id}', 'GeneralRecordsController@destroy')->name('general_records.destroy');
     Route::delete('/{id}/children/{child_id}', 'GeneralRecordsController@detachChild')->name('general_records.detach_child');
 });

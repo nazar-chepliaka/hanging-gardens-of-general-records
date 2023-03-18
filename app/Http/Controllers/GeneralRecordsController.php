@@ -83,4 +83,19 @@ class GeneralRecordsController extends Controller
 
         return redirect()->route('general_records.edit', $id)->with('success', 'Запис успішно вилучено');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $general_record = GeneralRecord::find($id);
+
+        $general_record->children_records()->sync([]);
+        $general_record->parent_records()->sync([]);
+
+        $general_record->delete();
+
+        return redirect()->route('general_records.index')->with('success', 'Запис успішно вилучено');
+    }
 }

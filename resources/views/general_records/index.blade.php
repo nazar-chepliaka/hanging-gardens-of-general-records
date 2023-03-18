@@ -2,6 +2,13 @@
 
 @section('head')
     <title>Перелік</title>
+
+    <style>
+        form {
+            margin-right: 10px;
+            display: inline;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -17,7 +24,16 @@
             <tr>
                 <td>#{{$general_record->id}}</td>
                 <td>{{$general_record->value}}</td>
-                <td><a href="{{ route('general_records.edit', $general_record->id) }}">✍️</a></td>
+                <td>
+                    <form action="{{ route('general_records.destroy', $general_record->id) }}" method="POST">
+                        {!! csrf_field() !!}
+                        {{ method_field('DELETE') }}
+
+                        <input type="submit" name="submit" value="❌">
+                    </form>
+
+                    <a href="{{ route('general_records.edit', $general_record->id) }}"><button>✍️</button></a>
+                </td>
             </tr>
         @empty
             <tr>
