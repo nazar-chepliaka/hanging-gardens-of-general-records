@@ -40,20 +40,32 @@
     <br>
     <div>
         Наразі є батьківським для:
-        @forelse ($general_record->children_records as $child)
-            <div>
-                <form action="{{ route('general_records.detach_child', ['id' => $general_record->id, 'child_id' => $child->id]) }}" method="POST">
-                    {!! csrf_field() !!}
-                    {{ method_field('DELETE') }}
 
-                    {{ $child->value }}
-                    <input type="submit" name="submit" value="Вилучити">
-                </form>
-            </div>
-        @empty
-            <p>
-                Жодного запису.
-            </p>
-        @endforelse
+        <table border="1">
+            <tr>
+                <th>Ідентифікатор</th>
+                <th>Вміст</th>
+                <th>Опції</th>
+            </tr>
+            @forelse ($general_record->children_records as $child)
+                <tr>
+                    <td>#{{$child->id}}</td>
+                    <td>{{ $child->value }}</td>
+                    <td>
+                        <form action="{{ route('general_records.detach_child', ['id' => $general_record->id, 'child_id' => $child->id]) }}" method="POST">
+                            {!! csrf_field() !!}
+                            {{ method_field('DELETE') }}
+
+                            
+                            <input type="submit" name="submit" value="Вилучити">
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">Жодного запису.</td>
+                </tr>
+            @endforelse
+        </table>
     </div>
 @endsection

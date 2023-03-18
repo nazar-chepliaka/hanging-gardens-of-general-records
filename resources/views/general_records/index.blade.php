@@ -2,12 +2,6 @@
 
 @section('head')
     <title>Перелік</title>
-
-    <style>
-        td, th {
-            padding: 10px;
-        }
-    </style>
 @endsection
 
 @section('content')

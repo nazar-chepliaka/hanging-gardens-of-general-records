@@ -8,9 +8,13 @@
         .alert-danger {
             color: #ff0000;
         }
-        
+
         .alert-success {
             color: #007d00;
+        }
+        
+        td, th {
+            padding: 10px;
         }
     </style>
 </head>
