@@ -17,12 +17,8 @@
 
 <img src="https://raw.githubusercontent.com/nazar-chepliaka/hanging-gardens-of-general-records/master/storage/app/readme-images/photo_2023-03-18_17-10-02.jpg">
 <br><br>
-<a href="https://github.com/AykutSarac/jsoncrack.com">
-<img src="https://raw.githubusercontent.com/nazar-chepliaka/hanging-gardens-of-general-records/master/storage/app/readme-images/jsoncrack-screenshot-min.jpg">
-</a>
-<br><br>
-<a href="https://chat.openai.com/">
-<img src="https://raw.githubusercontent.com/nazar-chepliaka/hanging-gardens-of-general-records/master/storage/app/readme-images/Screenshot_from_2023-03-18_22-20-41.png">
+<a href="https://observablehq.com/@d3/collapsible-tree">
+<img src="https://raw.githubusercontent.com/nazar-chepliaka/hanging-gardens-of-general-records/master/storage/app/readme-images/Screenshot_from_2023-03-19_11-43-22.png">
 </a>
 
 
