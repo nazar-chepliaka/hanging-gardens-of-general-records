@@ -50,14 +50,49 @@
         const container = document.getElementById("sigma-container");
 
         const graph = new Graph();
-        graph.addNode("n1", { x: 0, y: 0, size: 10 });
-        graph.addNode("n2", { x: -5, y: 5, size: 10 });
-        graph.addNode("n3", { x: 5, y: 5, size: 10 });
-        graph.addNode("n4", { x: 0, y: 10, size: 10 });
-        graph.addEdge("n1", "n2");
-        graph.addEdge("n2", "n4");
-        graph.addEdge("n4", "n3");
-        graph.addEdge("n3", "n1");
+
+        @php
+            $used_nodes = [];
+        @endphp
+
+        @forelse ($general_records_parents as $general_records_parent)
+
+            @if(!in_array("id".$general_records_parent->id, $used_nodes))
+            
+                graph.addNode("id{{ $general_records_parent->id }}", { size: 10, label: "{{$general_records_parent->value}}" });
+
+                @php
+                    $used_nodes[] = "id".$general_records_parent->id;
+                @endphp
+
+            @endif
+            
+            @foreach($general_records_parent->children_records as $children_record)
+
+                @if(!in_array("id".$children_record->id, $used_nodes))
+            
+                    graph.addNode("id{{ $children_record->id }}", { size: 10, label: "{{$children_record->value}}" });
+
+                    @php
+                        $used_nodes[] = "id".$children_record->id;
+                    @endphp
+
+                @endif
+
+                graph.addEdge("id{{ $general_records_parent->id }}", "id{{ $children_record->id }}");
+            @endforeach
+
+        @empty
+            graph.addNode("id0", { x: 0, y: 0, size: 10 });
+        @endforelse
+
+        if (graph.order > 1) {
+            graph.nodes().forEach((node, i) => {
+              const angle = (i * 2 * Math.PI) / graph.order;
+              graph.setNodeAttribute(node, "x", 100 * Math.cos(angle));
+              graph.setNodeAttribute(node, "y", 100 * Math.sin(angle));
+            });
+        }
 
         // Create the spring layout and start it
         const layout = new ForceSupervisor(graph, { isNodeFixed: (_, attr) => attr.highlighted });
