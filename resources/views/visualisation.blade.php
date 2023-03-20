@@ -79,6 +79,7 @@
     renderer.on("downNode", (e) => {
       isDragging = true;
       draggedNode = e.node;
+      console.log(draggedNode);
       graph.setNodeAttribute(draggedNode, "highlighted", true);
     });
 
