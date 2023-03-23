@@ -21,6 +21,10 @@
 <img src="https://raw.githubusercontent.com/nazar-chepliaka/hanging-gardens-of-general-records/master/storage/app/readme-images/Screenshot_from_2023-03-19_11-43-22.png">
 </a>
 
+<a href="https://pin.it/7uFlRnK">
+<img src="https://github.com/nazar-chepliaka/hanging-gardens-of-general-records/blob/master/storage/app/readme-images/b9fd7928be23ec4eb902d5102fd5eb8e.gif?raw=true">
+</a>
+
 
 ## License
 
